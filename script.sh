@@ -1,5 +1,6 @@
 #!/bin/bash
 #instalacion esencial
+echo instalacion esencial
 apt-get install -y build-essential
 apt-get install -y openssh-server
 apt-get install -y nfs-kernel-server
@@ -7,6 +8,7 @@ apt-get install -y nfs-common
 cd
 
 #configuracion de redes
+echo configuracion de redes
 ip addr show
 read -p "direccion_ip" ip
 read -p "identificador" id
@@ -16,6 +18,7 @@ echo $concat | tee --append /etc/hosts
 
 
 # mpi
+Echo parte de mpi
 sudo adduser mpiuser
 sudo usermod-aG sudo,adm mpiuser
 sudo  -i -u mpiuser ssh-keygen -b 4096 -C "" -p "" -f "/home/mpiuser/.ssh/id_rsa" -q
@@ -29,6 +32,7 @@ sudo mount -t nfs master:/home/mpiuser/cloud /home/mpiuser/cloud
 echo master:/home/mpiuser/cloud /home/mpiuser/cloud nfs | tee --apend /etc/fstab
  
 #instalacion de mpich-3.2.1
+echo instalacion de mpich
 wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz
 tar -xzf mpich-3.2.1.tar.gz
 cd mpich-3.2.1
